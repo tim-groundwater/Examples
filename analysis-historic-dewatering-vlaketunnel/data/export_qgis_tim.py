@@ -1,7 +1,7 @@
 import numpy as np
-import timml
+import timflow.steady as tfs
 
-model = timml.ModelMaq(
+model = tfs.ModelMaq(
     kaq=[0.1, 5.0, 15.0, 5.0],
     z=[1.0, -3.0, -7.0, -7.0, -14.0, -14.0, -30.0, -30.0, -40.0],
     c=[1000.0, 2.0, 2.0, 2.0],
@@ -9,7 +9,7 @@ model = timml.ModelMaq(
     npor=[None, None, None, None, None, None, None, None],
     hstar=-2.4,
 )
-dewatering_east_0 = timml.Well(
+dewatering_east_0 = tfs.Well(
     xw=59224.43941000212,
     yw=387382.7326884054,
     Qw=1950.0,
@@ -19,7 +19,7 @@ dewatering_east_0 = timml.Well(
     label=None,
     model=model,
 )
-dewatering_east_1 = timml.Well(
+dewatering_east_1 = tfs.Well(
     xw=59359.38892532585,
     yw=387375.9852126392,
     Qw=1950.0,
@@ -29,7 +29,7 @@ dewatering_east_1 = timml.Well(
     label=None,
     model=model,
 )
-dewatering_east_2 = timml.Well(
+dewatering_east_2 = tfs.Well(
     xw=59360.51350462022,
     yw=387311.88419286045,
     Qw=1950.0,
@@ -39,7 +39,7 @@ dewatering_east_2 = timml.Well(
     label=None,
     model=model,
 )
-dewatering_east_3 = timml.Well(
+dewatering_east_3 = tfs.Well(
     xw=59234.5606236514,
     yw=387298.38924132806,
     Qw=1950.0,
@@ -49,7 +49,7 @@ dewatering_east_3 = timml.Well(
     label=None,
     model=model,
 )
-dewatering_west_0 = timml.Well(
+dewatering_west_0 = tfs.Well(
     xw=58781.35516802254,
     yw=387375.9852126392,
     Qw=900.0,
@@ -59,7 +59,7 @@ dewatering_west_0 = timml.Well(
     label=None,
     model=model,
 )
-dewatering_west_1 = timml.Well(
+dewatering_west_1 = tfs.Well(
     xw=58785.8534852,
     yw=387307.385875683,
     Qw=900.0,
@@ -69,7 +69,7 @@ dewatering_west_1 = timml.Well(
     label=None,
     model=model,
 )
-channel_0 = timml.PolygonInhomMaq(
+channel_0 = tfs.PolygonInhomMaq(
     kaq=[0.1, 5.0, 15.0, 5.0],
     z=[0.0, -3.0, -7.0, -7.0, -14.0, -14.0, -30.0, -30.0, -40.0],
     c=[30.0, 2.0, 2.0, 2.0],
@@ -95,4 +95,3 @@ model.solve()
 head = model.headgrid(
     xg=np.arange(53700.0, 63675.0, 150.0), yg=np.arange(390375.0, 382800.0, -150.0)
 )
-
